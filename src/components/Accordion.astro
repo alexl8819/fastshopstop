@@ -1,0 +1,14 @@
+---
+const { isOpen = false, hasHtml = false, title, description } = Astro.props;
+---
+
+<details class="border-2 border-(--ink) bg-(--paper) mb-3 shadow-(--shadow) group" open={isOpen}>
+    <summary class="py-4 px-4.5 font-archivo-black text-[13.5px] normal-case cursor-pointer flex justify-between items-center gap-4 list-none after:content-['+'] after:font-ibm-plex-mono after:text-[18px] after:shrink-0 after:w-6.5 after:h-6.5 after:border-2 after:border-(--ink) after:flex after:items-center after:justify-center marker:hidden group-open:after:content-['\2212'] group-open:after:bg-(--gold)">
+        {title}
+    </summary>
+    {
+        hasHtml ?
+            <div set:html={description} class="pt-3.5 px-4.5 pb-4.5 text-[13.5px] text-[#4A4E58] leading-[1.65] border-t border-dashed border-t-(--ink) mt-0"></div> :
+            <div class="pt-3.5 px-4.5 pb-4.5 text-[13.5px] text-[#4A4E58] leading-[1.65] border-t border-dashed border-t-(--ink) mt-0">{description}</div>
+    }
+</details>

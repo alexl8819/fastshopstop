@@ -1,0 +1,10 @@
+---
+const { category, description, count = 0 } = Astro.props;
+---
+
+<button type="button" class="border-3 border-(--ink) bg-(--paper) p-6.5 cursor-pointer text-left shadow-(--shadow) transition-all duration-[.12s] ease-in flex flex-col gap-3.5 relative hover:translate-[-3px,-3px] hover:shadow-[rgba(23,27,34,0.9)] ">
+    <slot name="category-icon" />
+    <h3 class="text-[20px] font-archivo-black uppercase m-0 tracking-[0.01em] leading-[1.05]">{category}</h3>
+    <p class="text-[13px] text-[#4A4E58] m-0 leading-normal">{description}</p>
+    <div class="font-ibm-plex-mono text-[12px] mt-auto pt-2.5 border-t border-dashed mono" data-count-for="collectables">{count} items</div>
+</button>

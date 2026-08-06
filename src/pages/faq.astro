@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Frequently Asked Questions">
+	<section 
+		style="background-image: radial-gradient(circle at 12% 20%, rgba(232,148,42,0.10), transparent 45%), radial-gradient(circle at 88% 70%, rgba(18,150,138,0.14), transparent 40%);"
+		class="bg-(--navy) text-(--paper) pt-16 px-0 pb-11.5 border-b-6 border-b-(--ink)">
+  		<div class="max-w-7xl my-0 mx-auto py-0 px-7">
+    		<span class="font-ibm-plex-mono text-[12px] tracking-[0.14em] text-(--gold) inline-flex items-center gap-2 mb-3.5 before:w-2 before:h-2 before:bg-(--stamp-red) before:rounded-[50%] before:inline-block">GOT QUESTIONS?</span>
+    		<h1 class="font-archivo-black uppercase tracking-[0.01em] m-0 text-[clamp(38px,6vw,66px)]">Frequently Asked Questions</h1>
+    		<p class="text-[15.5px] text-[#C9CFDA] max-w-[56ch] mt-4leading-[1.6]">The stuff people ask us most, sorted the same way our shelves are: ordering, shipping, returns, condition and eBay policies. Can't find it here? The <a href="/contact" class="text-(--gold)">contact page</a> gets you a real answer fast.</p>
+  		</div>
+	</section>
+
+	<section class="pt-14 pb-22.5 max-w-7xl my-0 mx-auto py-0 px-7">
+		<div class="mb-10">
+    		<div class="font-ibm-plex-mono text-[12px] tracking-widest uppercase text-(--stamp-red) mb-3.5 flex items-center gap-2.5 after:flex-1 after:h-px after:bg-(--ink) after:opacity-25">Ordering &amp; Payment</div>
+
+			<Accordion 
+				isOpen
+				hasHtml
+				title="Do I buy directly on this site, or through eBay?"
+				description="Every item's <span class='inline-flex items-center decoration-[none] bg-(--ink) text-(--paper) font-ibm-plex-mono text-[11.5px] font-semibold py-2.25 px-3 tracking-[0.02em]'>View on eBay</span> button takes you to the actual listing (or a live search for it) on eBay. This site is our inventory window. Checkout, payment and buyer protection all happen on eBay itself."
+			/>
+			<Accordion 
+				title="Why do you sell through eBay instead of checkout on this site?"
+				description="eBay gives you buyer protection, tracked payment and a paper trail we can't replicate ourselves. It also means you can message us and see our feedback history before you buy."
+			/>
+			<Accordion 
+				title='What payment methods do you accept?'
+				description="Whatever eBay supports on the listing itself, typically debit/credit card, PayPal, and Apple/Google Pay depending on your region. We don't take payment outside of eBays system."
+			/>
+			<Accordion 
+				title='Can I reserve an item before buying?'
+				description="We don't hold items. Stock shown here updates as pieces sell, but the first completed eBay purchase wins if two people go for the same low-stock item at once."
+			/>
+  		</div>
+
+  		<div class="mb-10">
+    		<div class="font-ibm-plex-mono text-[12px] tracking-widest uppercase text-(--stamp-red) mb-3.5 flex items-center gap-2.5 after:flex-1 after:h-px after:bg-(--ink) after:opacity-25">Item Condition &amp; Authenticity</div>
+			
+			<Accordion
+				hasHtml
+				title='How accurate are the condition notes on each card?'
+				description="We write them according to eBay's standards after inspecting the item. <strong>Near Mint</strong> means card is free of any defects. <strong>Lighty Played</strong> means the card is generally free of defects but may have some white edges or scratches that are not very noticable. <strong>Moderately Played</strong> is rarely sold and usually is seen with obvious defects, ungraded. All conditions details are in the listing."
+			/>
+    		<Accordion 
+				title="Are graded cards authenticated?"
+				description="Graded slabs come exactly as graded by the third-party service shown on the case, usually PSA or BCG. Cards are usually sold ungraded unless otherwise listed."
+			/>
+			<Accordion 
+				title="Do electronics come with a warranty?"
+				description="We test every used electronic item before it's listed and note the result honestly. Beyond that, coverage depends on the listing. Check the eBay page for any specific warranty or return terms on that item."
+			/>
+  		</div>
+
+  		<div class="mb-10">
+    		<div class="font-ibm-plex-mono text-[12px] tracking-widest uppercase text-(--stamp-red) mb-3.5 flex items-center gap-2.5 after:flex-1 after:h-px after:bg-(--ink) after:opacity-25">Shipping</div>
+
+			<Accordion
+				hasHtml 
+				title="How fast do you ship after I buy?"
+				description="Most orders leave our unit within one business day, Monday through Friday before 5pm PST. You'll get tracking through eBay the moment a label is printed. Full details are on our <a href='/shipping' class='text-(--stamp-red)'>Shipping &amp; Returns</a> page."
+			/>
+			<Accordion 
+				title="Do you ship internationally?"
+				description="No, on most items unless otherwise specified."
+			/>
+  		</div>
+
+  		<div class="mb-10">
+    		<div class="font-ibm-plex-mono text-[12px] tracking-widest uppercase text-(--stamp-red) mb-3.5 flex items-center gap-2.5 after:flex-1 after:h-px after:bg-(--ink) after:opacity-25">Returns</div>
+			
+			<Accordion
+				hasHtml
+				title="What's your return window?"
+				description="30 days from delivery for most items unless listed as all sales final, item unused and in the condition it shipped in. Full policy and step-by-step instructions are on the <a href='/shipping' class='text-(--stamp-red)'>Shipping &amp; Returns</a> page."
+			/>
+			<Accordion
+				title="What if my item arrives damaged or not as described?"
+				description="Message us through eBay with photos within 3 days of delivery and we'll sort a replacement or full refund, buyers are protected via eBay's A-Z guarantee."
+			/>
+  		</div>
+	</section>
+	<Footer />
+</Layout>

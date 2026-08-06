@@ -1,11 +1,141 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getSecret } from 'astro:env/server';
+import camelcaseKeys from 'camelcase-keys';
+import dayjs from 'dayjs';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { getCurrentItems, convertTimeLeft, convertTimeLeftToExpiration, type Inventory as ItemInventory, type InventoryItem } from '../inventory';
+import { Category, getCategory } from '../category';
+
+import Layout from '../layouts/Layout.astro';
+import Inventory from '../components/Inventory.vue';
+import Footer from '../components/Footer.astro';
+import Bin from '../components/Bin.astro';
+
+const inventoryKey = getSecret('INVENTORY_KEY') || 'inventory';
+
+const inv: ItemInventory = (await getCurrentItems(inventoryKey) as unknown) as ItemInventory;
+const items: Array<InventoryItem> = camelcaseKeys(inv.items).map((item) => {
+	const tl = convertTimeLeft(item.timeLeft as string);
+	return Object.assign({}, item, {
+		timeLeft: tl,
+		expiration: convertTimeLeftToExpiration(tl)
+	});
+});
+
+let liveCount = 0;
+let stock = 0;
+let binCounts = {
+	collectables: 0,
+	electronics: 0,
+	sportswear: 0
+};
+
+for (const item of items) {
+	liveCount += 1;
+	stock += item.quantity;
+
+	const itemCategory = getCategory(item.categorySku);
+
+	if (itemCategory === Category.Collectables) {
+		binCounts.collectables++;
+	} else if (itemCategory === Category.Electronics) {
+		binCounts.electronics++;
+	} else if (itemCategory === Category.Sportswear) {
+		binCounts.sportswear++;
+	}
+}
+
+binCounts = Object.freeze(binCounts);
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Current Inventory">
+	<section 
+		style="background-image: radial-gradient(circle at 12% 20%, rgba(232,148,42,0.10), transparent 45%), radial-gradient(circle at 88% 70%, rgba(18,150,138,0.14), transparent 40%);"
+		class="bg-(--navy) text-(--paper) relative overflow-hidden border-b-6 border-b-(--ink)"
+	>
+  		<div class="max-w-7xl my-0 mx-auto pt-22 px-7 pb-17.5 grid grid-cols-[1.3fr_1fr] gap-10 items-center">
+    		<div>
+      			<span class="font-ibm-plex-mono text-[12px] tracking-[0.14em] text-(--gold) gap-2 inline-flex items-center before:w-2 before:h-2 before:bg-(--stamp-red) before:rounded-[50%] before:inline-block">LIVE INVENTORY FEED</span>
+      			<h1 class="font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0 text-[clamp(38px,6vw,66px)]">NEW INVENTORY,<br><span class="text-(--gold)">PRICED TO MOVE.</span></h1>
+      			<p class="font-[17px] max-w-[46ch] text-[#C9CFDA] mt-5 heading-[1.6]">Collectables pulled from the shelf, electronics pulled from the box, sportswear pulled off the rack. Everything you see here is actually sitting in our unit — check stock, then jump straight to the eBay listing to buy.</p>
+      			<div class="flex gap-3.5 mt-8 flex-wrap">
+        			<a href="#inventory" class="btn btn-solid">Browse Inventory ↓</a>
+        			<a href="#bins" class="btn">See the Bins</a>
+      			</div>
+      			<div class="mt-10 flex gap-7 flex-wrap font-ibm-plex-mono text-[12px] text-[#9AA3B2]">
+        			<div><b id="stat-total" class="text-(--paper) text-[20px] block font-archivo-black">{ liveCount }</b>items live</div>
+        			<div><b id="stat-cats" class="text-(--paper) text-[20px] block font-archivo-black">3</b>categories</div>
+        			<div><b id="stat-instock" class="text-(--paper) text-[20px] block font-archivo-black">{ stock }</b>in stock now</div>
+      			</div>
+    		</div>
+    		<div class="relative h-85" aria-hidden="true">
+      			<div class="absolute bg-(--paper) text-(--ink) py-4 px-4.5 w-50 shadow-(--shadow) font-ibm-plex-mono text-[12px] border-2 border-(--ink) top-0 left-[10%] transform -rotate-6 border-l-6 border-l-(--purple)">
+        			<div class="font-archivo-black text-[14px] mb-1.5 uppercase">Collectables</div>
+        			vintage &middot; sealed &middot; graded
+        			<div class="text-[18px] font-semibold mt-2">$$ &rarr; $$$</div>
+      			</div>
+      			<div class="absolute bg-(--paper) text-(--ink) py-4 px-4.5 w-50 shadow-(--shadow) font-ibm-plex-mono text-[12px] border-2 border-(--ink) top-30 left-[38%] transform rotate-4 border-l-6 border-l-(--teal) z-2">
+        			<div class="font-archivo-black text-[14px] mb-1.5 uppercase">Electronics</div>
+        			tested &middot; boxed &middot; working
+        			<div class="text-[18px] font-semibold mt-2">$ &rarr; $$$</div>
+      			</div>
+      			<div class="absolute bg-(--paper) text-(--ink) py-4 px-4.5 w-50 shadow-(--shadow) font-ibm-plex-mono text-[12px] border-2 border-(--ink) top-57.5 left-[6%] transform -rotate-3 border-l-6 border-l-(--gold)">
+        			<div class="font-archivo-black text-[14px] mb-1.5 uppercase">Sportswear</div>
+        			deadstock &middot; game-worn &middot; retro
+        			<div class="text-[18px] font-semibold mt-2">$ &rarr; $$</div>
+      			</div>
+    		</div>
+  		</div>
+	</section>
+
+	<section class="pt-16 pb-5 max-w-7xl my-0 mx-auto py-0 px-7" id="bins">
+  		<div class="mb-8.5">
+    		<span class="font-ibm-plex-mono text-[12px] tracking-[0.12em] text-(--stamp-red) mb-2 block">SORTED FOR YOU</span>
+    		<h2 class="font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0 text-[clamp(26px,4vw,36px)]">Pick a bin, any bin.</h2>
+  		</div>
+  		<div class="grid grid-cols-[1fr] md:grid-cols-[repeat(3,1fr)] gap-5">
+			<Bin
+				category="collectables"
+				description="Trading cards, sealed figures, graded slabs and shelf-worthy oddities. If it's rare, it lives here."
+				count={binCounts.collectables}
+			>
+				<div slot="category-icon" class="bg-(--purple) w-13 h-13 rounded-[50%] flex items-center justify-center text-white">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6-5.5-3-5.5 3 1-6L3 8.9 9 8z"/></svg>
+				</div>
+			</Bin>
+			<Bin
+				category="electronics"
+				description="Consoles, computers, networking equipment, headphones and small gadgets — powered on and checked before they get listed."
+				count={binCounts.electronics}	
+			>
+				<div slot="category-icon" class="bg-(--teal) w-13 h-13 rounded-[50%] flex items-center justify-center text-white">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
+				</div>
+			</Bin>
+			<Bin
+				category="sportswear"
+				description="Athletic footwear. Team gear and streetwear crossovers alike."
+				count={binCounts.sportswear}
+			>
+				<div slot="category-icon" class="bg-(--gold) w-13 h-13 rounded-[50%] flex items-center justify-center text-white">
+					<svg slot="category-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l3 3-3 10 3 3M18 4l-3 3 3 10-3 3M9 7h6M9 17h6"/></svg>
+				</div>
+			</Bin>
+  		</div>
+	</section>
+
+	<section class="pt-14 pb-22.5 max-w-7xl my-0 mx-auto py-0 px-7" id="inventory">
+  		<div class="mb-8.5">
+    		<span class="font-ibm-plex-mono text-[12px] tracking-[0.12em] text-(--stamp-red) mb-2 block">THE FLOOR</span>
+    		<h2 class="font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0 text-[clamp(26px,4vw,36px)]">Everything currently on the shelf</h2>
+  		</div>
+
+  		<Inventory items={items} client:visible />
+
+		<div class="font-archivo-black text-[#8a8a8a] text-[11px] my-8 opacity-45 flex justify-end">
+			Last updated: {dayjs(inv.lastUpdated)}
+		</div>
+	</section>
+
+	<Footer />
 </Layout>

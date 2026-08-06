@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root{
+    --ink:#171B22;
+    --paper:#E9E4D4;
+    --paper-dim:#DED8C4;
+    --navy:#12161D;
+    --navy-2:#1D2430;
+    --purple:#7C5CBF;
+    --purple-dim:#EDE7F7;
+    --teal:#12968A;
+    --teal-dim:#E1F3F1;
+    --gold:#E8942A;
+    --gold-dim:#FBEBD4;
+    --stamp-red:#D8432A;
+    --ok-green:#3F7A3A;
+    --line:#171B22;
+    --shadow: 4px 4px 0 rgba(23,27,34,0.9);
+  }
+
+  @theme {
+    --font-work-sans: 'Work Sans', sans-serif;
+    --font-ibm-plex-mono: 'IBM Plex Mono', monospace;
+    --font-archivo-black: 'Archivo Black', sans-serif;
+    
+    --animate-risein: riseIn .35s ease both;
+
+    @keyframes riseIn { from{ opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  }

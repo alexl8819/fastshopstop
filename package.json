@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "faststopshop",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -12,6 +12,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.1.1"
+    "@astrojs/vue": "^7.0.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@upstash/redis": "^1.38.0",
+    "astro": "^7.1.1",
+    "camelcase-keys": "^10.0.2",
+    "dayjs": "^1.11.21",
+    "tailwindcss": "^4.3.3",
+    "vue": "^3.5.40"
+  },
+  "devDependencies": {
+    "@fontsource-variable/work-sans": "^5.2.8",
+    "@fontsource/archivo-black": "^5.2.8",
+    "@fontsource/ibm-plex-mono": "^5.2.7"
   }
 }
