@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Shipping / Returns">
+	<section 
+		style="background-image: radial-gradient(circle at 12% 20%, rgba(232,148,42,0.10), transparent 45%), radial-gradient(circle at 88% 70%, rgba(18,150,138,0.14), transparent 40%);"	
+		class="bg-(--navy) text-(--paper) pt-16 px-0 pb-11.5 border-b-6 border-b-(--ink)"
+	>
+  		<div class="max-w-7xl my-0 mx-auto py-0 px-7">
+    		<span class="font-ibm-plex-mono text-[12px] tracking-[0.14em] text-(--gold) inline-flex items-center gap-2 mb-4.5 before:w-2 before:h-2 before:bg-(--stamp-red) before:rounded-[50%] before:inline-block">FROM OUR UNIT TO YOUR DOOR</span>
+    		<h1 class="font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0 text-[clamp(38px,6vw,66px)]">Shipping &amp; Returns</h1>
+    		<p class="text-[17px] max-w-[56ch] text-[#C9CFDA] mt-4 leading-[1.6]">How fast we pack, what it costs, and exactly what to do if something isn't right. All orders and returns are handled through eBay's system, so your purchase is always covered.</p>
+  		</div>
+	</section>
+
+	<section class="pt-14 pb-22.5 max-w-7xl my-0 mx-auto py-0 px-7">
+		<div class="mb-8.5">
+    		<span class="font-ibm-plex-mono text-[12px] tracking-[0.12em] text-(--stamp-red) mb-2 block">SHIPPING</span>
+    		<h2 class="font-[clamp(26px,4vw,36px)] font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0">Getting your order out the door</h2>
+  		</div>
+
+  		<div class="grid grid-cols-[repeat(3,1fr)] gap-5 mb-12.5">
+    		<div class="border-2 border-(--ink) bg-(--paper) p-5.5 shadow-(--shadow)">
+      			<div class="text-[22px] mb-2.5">📦</div>
+      			<h4 class="font-archivo-black text-[14px] mb-2">Processing Time</h4>
+      			<p class="font-[13px] text-[#4A4E58] leading-[1.55] m-0">Orders are packed and handed to the carrier within 1–2 business days of a completed eBay purchase. Weekend orders ship the next business day.</p>
+    		</div>
+    		<div class="border-2 border-(--ink) bg-(--paper) p-5.5 shadow-(--shadow)">
+      			<div class="text-[22px] mb-2.5">🛰️</div>
+      			<h4 class="font-archivo-black text-[14px] mb-2">Tracking</h4>
+      			<p class="font-[13px] text-[#4A4E58] leading-[1.55] m-0">Tracking uploads straight to your eBay order automatically the moment a label is printed — you'll see it under "Purchase history."</p>
+    		</div>
+    		<div class="border-2 border-(--ink) bg-(--paper) p-5.5 shadow-(--shadow)">
+      			<div class="text-[22px] mb-2.5">🌎</div>
+      			<h4 class="font-archivo-black text-[14px] mb-2">Where We Ship</h4>
+      			<p class="font-[13px] text-[#4A4E58] leading-[1.55] m-0">Domestic shipping on everything, international on most items. Exact carriers and rates for your address show up on the listing itself.</p>
+    		</div>
+  		</div>
+
+  		<table class="w-full border-collapse mb-12.5 shadow-(--shadow)">
+    		<thead>
+      			<tr>
+        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Method</th>
+        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Typical Transit</th>
+        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Best For</th>
+        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Tracked</th>
+      			</tr>
+    		</thead>
+    		<tbody>
+      			<tr>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Standard</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">3–6 business days</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Ungraded cards, general electronics, sportswear</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Yes</td>
+      			</tr>
+      			<tr>
+        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Expedited</td>
+        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">2–3 business days</td>
+        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Time-sensitive orders</td>
+        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Yes</td>
+      			</tr>
+      			<tr>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Signature Required</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">3–6 business days</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">High-value collectables, graded slabs</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Yes + signature</td>
+      			</tr>
+    		</tbody>
+  		</table>
+
+  		<div class="bg-(--navy-2) text-(--paper) border-3 border-(--ink) shadow-(--shadow) py-6.5 px-7 mt-2.5 flex gap-4.5 items-start">
+    		<div class="text-[24px]">🧊</div>
+    		<p class="text-[13px] text-[#C9CFDA] leading-[1.6] m-0"><strong class="text-(--paper)">Fragile items get extra care.</strong> Graded slabs and anything glass or screen-based ship double-boxed with corner protection. That's baked into the price, not an add-on.</p>
+  		</div>
+
+  		<div class="mb-8.5 mt-15">
+    		<span class="font-ibm-plex-mono text-[12px] tracking-[0.12em] text-(--stamp-red) mb-2 block">RETURNS</span>
+    		<h2 class="font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0 text-[clamp(26px,4vw,36px)]">If it's not right, we'll fix it</h2>
+  		</div>
+
+  		<div class="flex flex-col gap-0 mb-5">
+    		<div class="grid grid-cols-[56px_1fr] gap-5 py-5.5 px-0 border-b border-dashed border-(--ink)">
+      			<div class="w-11 h-11 border-2 border-(--ink) rounded-[50%] bg-(--gold) flex items-center justify-center font-archivo-black text-[15px]">1</div>
+      			<div>
+        			<h4 class="font-archivo-black text-[14.5px] mb-1.5">Check the window</h4>
+        			<p class="text-[13.5px] text-[#4A4E58] leading-[1.6] m-0 max-w-[62ch]">Most items can be returned within 30 days of delivery, unused and in the condition they arrived in. Sealed collectables must remain sealed to qualify, once opened, that item is final sale.</p>
+      			</div>
+    		</div>
+    		<div class="grid grid-cols-[56px_1fr] gap-5 py-5.5 px-0 border-b border-dashed border-(--ink)">
+      			<div class="w-11 h-11 border-2 border-(--ink) rounded-[50%] bg-(--gold) flex items-center justify-center font-archivo-black text-[15px]">2</div>
+      			<div>
+        			<h4 class="font-archivo-black text-[14.5px] mb-1.5">Start the return on eBay</h4>
+        			<p class="text-[13.5px] text-[#4A4E58] leading-[1.6] m-0 max-w-[62ch]">Open the order under "Purchase history" and select "Return this item." This is the fastest path as it notifies us immediately and keeps everything on the record eBay already has for your order.</p>
+      			</div>
+    		</div>
+    		<div class="grid grid-cols-[56px_1fr] gap-5 py-5.5 px-0 border-b border-dashed border-(--ink)">
+      			<div class="w-11 h-11 border-2 border-(--ink) rounded-[50%] bg-(--gold) flex items-center justify-center font-archivo-black text-[15px]">3</div>
+      			<div>
+        			<h4 class="font-archivo-black text-[14.5px] mb-1.5">Ship it back</h4>
+        			<p class="text-[13.5px] text-[#4A4E58] leading-[1.6] m-0 max-w-[62ch]">Pack it the way it arrived where possible. For buyer's-remorse returns, return shipping is on you; for our mistakes or damaged/wrong items, we cover the label.</p>
+      			</div>
+    		</div>
+    		<div class="grid grid-cols-[56px_1fr] gap-5 py-5.5 px-0 border-none">
+      			<div class="w-11 h-11 border-2 border-(--ink) rounded-[50%] bg-(--gold) flex items-center justify-center font-archivo-black text-[15px]">4</div>
+      			<div>
+        			<h4 class="font-archivo-black text-[14.5px] mb-1.5">Get refunded</h4>
+        			<p class="text-[13.5px] text-[#4A4E58] leading-[1.6] m-0 max-w-[62ch]">Once the item is back with us and checked, refunds process within 2 business days to your original payment method through eBay.</p>
+      			</div>
+    		</div>
+  		</div>
+
+  		<div class="bg-(--navy-2) text-(--paper) border-3 border-(--ink) shadow-(--shadow) py-6.5 px-7 mt-2.5 flex gap-4.5 items-start">
+    		<div class="text-[24px]">⚠️</div>
+    		<p class="text-[13px] text-[#C9CFDA] leading-[1.6] m-0"><strong class="text-(--paper)">Damaged in transit or not as described?</strong> Message us on eBay with photos within 3 days of delivery. We'll send a replacement or full refund right away. No need to wait on the standard return window for this.</p>
+  		</div>
+	</section>
+	<Footer />
+</Layout>
