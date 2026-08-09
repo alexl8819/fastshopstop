@@ -10,17 +10,9 @@ import Layout from '../layouts/Layout.astro';
 import Inventory from '../components/Inventory.vue';
 import Footer from '../components/Footer.astro';
 import Bin from '../components/Bin.astro';
+import Button from '../components/ui/Button.astro';
 
 const inventoryKey = getSecret('INVENTORY_KEY') || 'inventory';
-
-const inv: ItemInventory = (await getCurrentItems(inventoryKey) as unknown) as ItemInventory;
-const items: Array<InventoryItem> = camelcaseKeys(inv.items).map((item) => {
-	const tl = convertTimeLeft(item.timeLeft as string);
-	return Object.assign({}, item, {
-		timeLeft: tl,
-		expiration: convertTimeLeftToExpiration(tl)
-	});
-});
 
 let liveCount = 0;
 let stock = 0;
@@ -30,7 +22,8 @@ let binCounts = {
 	sportswear: 0
 };
 
-for (const item of items) {
+const inv: ItemInventory = (await getCurrentItems(inventoryKey) as unknown) as ItemInventory;
+const items: Array<InventoryItem> = camelcaseKeys(inv.items).map((item) => {
 	liveCount += 1;
 	stock += item.quantity;
 
@@ -43,7 +36,14 @@ for (const item of items) {
 	} else if (itemCategory === Category.Sportswear) {
 		binCounts.sportswear++;
 	}
-}
+
+	const tl = convertTimeLeft(item.timeLeft as string);
+
+	return Object.assign({}, item, {
+		timeLeft: tl,
+		expiration: convertTimeLeftToExpiration(tl)
+	});
+});
 
 binCounts = Object.freeze(binCounts);
 ---
@@ -59,8 +59,8 @@ binCounts = Object.freeze(binCounts);
       			<h1 class="font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0 text-[clamp(38px,6vw,66px)]">NEW INVENTORY,<br><span class="text-(--gold)">PRICED TO MOVE.</span></h1>
       			<p class="font-[17px] max-w-[46ch] text-[#C9CFDA] mt-5 heading-[1.6]">Collectables pulled from the shelf, electronics pulled from the box, sportswear pulled off the rack. Everything you see here is actually sitting in our unit — check stock, then jump straight to the eBay listing to buy.</p>
       			<div class="flex gap-3.5 mt-8 flex-wrap">
-        			<a href="#inventory" class="btn btn-solid">Browse Inventory ↓</a>
-        			<a href="#bins" class="btn">See the Bins</a>
+        			<Button url="#inventory" text="Browse Inventory ↓" isLink isSolid />
+        			<Button url="#bins" text="See the Bins" isLink />
       			</div>
       			<div class="mt-10 flex gap-7 flex-wrap font-ibm-plex-mono text-[12px] text-[#9AA3B2]">
         			<div><b id="stat-total" class="text-(--paper) text-[20px] block font-archivo-black">{ liveCount }</b>items live</div>
