@@ -61,5 +61,5 @@ export function convertTimeLeft (time: string): Date {
 }
 
 export function convertTimeLeftToExpiration (future: string | Date): string {
-	return dayjs().to(future);
+	return `${dayjs(future).diff(dayjs(), 'days')} days`;
 }

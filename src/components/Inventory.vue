@@ -174,7 +174,7 @@
 					'bg-(--teal)': getCategory(item.categorySku) === Category.Electronics,
 					'bg-(--gold)': getCategory(item.categorySku) === Category.Sportswear
 				}"></div>
-				<div class="h-37.5 flex items-center justify-center border-b-2 border-dashed border-(--ink) relative overflow-hidden" :class="{
+				<div class="h-52 flex items-center justify-center border-b-2 border-dashed border-(--ink) relative overflow-hidden" :class="{
 					'bg-(--purple-dim)': getCategory(item.categorySku) === Category.Collectables,
 					'bg-(--teal-dim)': getCategory(item.categorySku) === Category.Electronics,
 					'bg-(--gold-dim)': getCategory(item.categorySku) === Category.Sportswear
@@ -198,7 +198,7 @@
 						<span>{{ item.condition }}</span>
 					</div>
 					<div class="my-2 text-[12.5px] text-[#6b6f78] text-center font-ibm-plex-mono">
-						Expires <span class="font-semibold">{{ item.expiration }}</span>
+						Expires in <span class="font-semibold">{{ item.expiration }}</span>
 					</div>
 					<div class="flex items-center justify-between mt-2.5 border-t border-dashed border-t-(--ink) pt-3">
 						<span class="font-ibm-plex-mono text-[19px] font-semibold">${{ item.price.toFixed(2) }}</span>
