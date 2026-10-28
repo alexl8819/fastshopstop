@@ -8,6 +8,7 @@ import { Category, getCategory } from '../category';
 
 import Layout from '../layouts/Layout.astro';
 import Inventory from '../components/Inventory.vue';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Bin from '../components/Bin.astro';
 import Button from '../components/ui/Button.astro';
@@ -23,7 +24,11 @@ let binCounts = {
 };
 
 const inv: ItemInventory = (await getCurrentItems(inventoryKey) as unknown) as ItemInventory;
-const items: Array<InventoryItem> = camelcaseKeys(inv.items).map((item) => {
+const items: Array<InventoryItem> = camelcaseKeys(inv.items).filter((item) => {
+	const itemCategory = getCategory(item.categorySku);
+
+	return itemCategory === Category.Collectables || itemCategory === Category.Electronics || itemCategory === Category.Sportswear;
+}).map((item) => {
 	liveCount += 1;
 	stock += item.quantity;
 
@@ -36,7 +41,7 @@ const items: Array<InventoryItem> = camelcaseKeys(inv.items).map((item) => {
 	} else if (itemCategory === Category.Sportswear) {
 		binCounts.sportswear++;
 	}
-
+	
 	const tl = convertTimeLeft(item.timeLeft as string);
 
 	return Object.assign({}, item, {
@@ -49,6 +54,7 @@ binCounts = Object.freeze(binCounts);
 ---
 
 <Layout title="Current Inventory">
+	<Header />
 	<section 
 		style="background-image: radial-gradient(circle at 12% 20%, rgba(232,148,42,0.10), transparent 45%), radial-gradient(circle at 88% 70%, rgba(18,150,138,0.14), transparent 40%);"
 		class="bg-(--navy) text-(--paper) relative overflow-hidden border-b-6 border-b-(--ink)"
