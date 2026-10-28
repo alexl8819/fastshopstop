@@ -3,7 +3,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Redis } from '@upstash/redis';
 import { getSecret } from 'astro:env/server';
 
-const TIME_LEFT_REGEX = /^P(\d+)DT(\d+)H(\d+)M(\d+)S$/m;
+const TIME_LEFT_REGEX = /^P(?:(\d+)D)?(?:T(\d+))?(?:H(\d+))?(?:M(\d+))?S$/m;
 
 dayjs.extend(relativeTime);
 
@@ -51,15 +51,41 @@ export function convertTimeLeft (time: string): Date {
 	if (!parsedTime || !Array.isArray(parsedTime)) {
 		throw new Error('Invalid time provided: must be string');
 	}
-
-	futureDate = futureDate.add(parsedTime[1], 'd');
-	futureDate = futureDate.add(parsedTime[2], 'h');
-	futureDate = futureDate.add(parsedTime[3], 'm');
-	futureDate = futureDate.add(parsedTime[4], 's');
+	// TODO: simplify logic
+	if (parsedTime[1]) {
+		futureDate = futureDate.add(parsedTime[1], 'd');
+	}
+	if (parsedTime[2]) {
+		futureDate = futureDate.add(parsedTime[2], 'h');
+	} else if (parsedTime[2] && !parsedTime[1] && !parsedTime[3] && !parsedTime[4]) {
+		futureDate = futureDate.add(parsedTime[2], 's');
+	}
+	if (parsedTime[3]) {
+		futureDate = futureDate.add(parsedTime[3], 'm');
+	} else if (!parsedTime[3] && (parsedTime[2] && parsedTime[4])) {
+		futureDate = futureDate.add(parsedTime[2], 'm');
+	}
+	if (parsedTime[4]) {
+		futureDate = futureDate.add(parsedTime[4], 's');
+	}
 
 	return futureDate.toDate();
 }
 
 export function convertTimeLeftToExpiration (future: string | Date): string {
-	return `${dayjs(future).diff(dayjs(), 'days')} days`;
+	const now = dayjs();
+	const days = dayjs(future).diff(now, 'days');
+	
+	if (days === 0) {
+		const hours = dayjs(future).diff(now, 'hours');
+
+		if (hours === 0) {
+			const minutes = dayjs(future).diff(now, 'minutes');
+			return `${minutes} minutes`;
+		}
+
+		return `${hours} hours`;
+	}
+
+	return `${days} days`;
 }
