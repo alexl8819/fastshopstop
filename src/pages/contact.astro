@@ -1,0 +1,61 @@
+---
+import { name } from '../../package.json';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout class="Contact">
+	<Header />
+	<section 
+		style="background-image: radial-gradient(circle at 12% 20%, rgba(232,148,42,0.10), transparent 45%), radial-gradient(circle at 88% 70%, rgba(18,150,138,0.14), transparent 40%);"	
+		class="bg-(--navy) text-(--paper) pt-16 px-0 pb-11.5 border-b-6 border-b-(--ink)"
+	>
+  		<div class="max-w-7xl my-0 mx-auto py-0 px-7">
+    		<span class="font-ibm-plex-mono text-[12px] tracking-[0.14em] text-(--gold) inline-flex items-center gap-2 mb-4.5 before:w-2 before:h-2 before:bg-(--stamp-red) before:rounded-[50%] before:inline-block">TALK TO AN ACTUAL PERSON</span>
+    		<h1 class="font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0 text-[clamp(38px,6vw,66px)]">Contact {name}</h1>
+    		<p class="text-[17px] max-w-[56ch] text-[#C9CFDA] mt-4 leading-[1.6]">Question about an item, an order, or just want to know what's coming out of the unit next? Here's every way to reach us.</p>
+  		</div>
+	</section>
+
+	<section class="pt-14 pb-22.5 max-w-7xl my-0 mx-auto px-28px">
+  		<div class="grid grid-cols-1fr gap-10 items-start">
+    		<div class="flex flex-col gap-4">
+      			<div class="border-2 border-(--ink) bg-(--paper) p-6 shadow-(--shadow) flex items-start gap-3.5">
+        			<div class="w-12 h-12 rounded-[50%] bg-(--teal) text-white flex items-center justify-center shrink-0 text-[16px]">✉️</div>
+        			<div>
+          				<h4 class="font-archivo-black text-[14px] mb-1.25">Email</h4>
+          				<p class="text-[13.5px] text-[#4A4E58] m-0 leading-normal">Best for detailed questions or general support regarding inventory, orders and refunds.</p>
+          				<a class="text-(--stamp-red) font-ibm-plex-mono text-[13px]" href="mailto:support@fastshopstop.com">support@fastshopstop.com</a>
+        			</div>
+      			</div>
+
+      			<div class="border-2 border-(--ink) bg-(--paper) p-6 shadow-(--shadow) flex items-start gap-3.5">
+        			<div class="w-12 h-12 rounded-[50%] bg-(--purple) text-white flex items-center justify-center shrink-0 text-[16px]">🛍️</div>
+        			<div>
+          				<h4 class="font-archivo-black text-[14px] mb-1.25">eBay Messages</h4>
+          				<p class="text-[13.5px] text-[#4A4E58] m-0 leading-normal">For anything about a specific order, fastest way to get it linked to your purchase and covered by eBay's system.</p>
+          				<a class="text-(--stamp-red) font-ibm-plex-mono text-[13px]" href="https://www.ebay.com" target="_blank" rel="noopener">Message us via eBay ↗</a>
+        			</div>
+      			</div>
+
+      			<div class="border-2 border-(--ink) bg-(--paper) p-6 shadow-(--shadow) flex items-start gap-3.5">
+        			<div class="w-12 h-12 rounded-[50%] bg-(--gold) text-white flex items-center justify-center shrink-0 text-[16px]">🕒</div>
+        			<div>
+          				<h4 class="font-archivo-black text-[14px] mb-1.25">Response Time</h4>
+          				<p class="text-[13.5px] text-[#4A4E58] m-0 leading-normal">We reply within 1 business day, usually faster on weekdays. eBay order messages get priority.</p>
+        			</div>
+      			</div>
+
+      			<div class="border-2 border-(--ink) bg-(--paper) p-6 shadow-(--shadow) flex items-start gap-3.5">
+        			<div class="w-12 h-12 rounded-[50%] bg-(--stamp-red) text-white flex items-center justify-center shrink-0 text-[16px]">📍</div>
+        			<div>
+          				<h4 class="font-archivo-black text-[14px] mb-1.25">Location</h4>
+          				<p class="text-[13.5px] text-[#4A4E58] m-0 leading-normal">Small unit with no walk-in storefront, everything ships out, nothing is available for local pickup right now.</p>
+        			</div>
+      			</div>
+    		</div>
+  		</div>
+	</section>
+	<Footer />
+</Layout>
