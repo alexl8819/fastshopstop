@@ -23,7 +23,7 @@ import Footer from '../components/Footer.astro';
     		<h2 class="font-[clamp(26px,4vw,36px)] font-archivo-black uppercase tracking-[0.01em] leading-[1.05] m-0">Getting your order out the door</h2>
   		</div>
 
-  		<div class="grid grid-cols-[repeat(3,1fr)] gap-5 mb-12.5">
+  		<div class="grid grid-cols-1fr md:grid-cols-[repeat(3,1fr)] gap-5 mb-12.5">
     		<div class="border-2 border-(--ink) bg-(--paper) p-5.5 shadow-(--shadow)">
       			<div class="text-[22px] mb-2.5">📦</div>
       			<h4 class="font-archivo-black text-[14px] mb-2">Processing Time</h4>
@@ -41,33 +41,33 @@ import Footer from '../components/Footer.astro';
     		</div>
   		</div>
 
-  		<table class="w-full border-collapse mb-12.5 shadow-(--shadow)">
+  		<table class="w-full table-fixed md:table-auto border-collapse mb-12.5 shadow-(--shadow)">
     		<thead>
       			<tr>
-        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Method</th>
-        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Typical Transit</th>
-        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Best For</th>
-        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Tracked</th>
+        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Method</th>
+        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Typical Transit</th>
+        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Best For</th>
+        			<th class="bg-(--navy) text-(--paper) font-ibm-plex-mono tracking-[0.06em] uppercase border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Tracked</th>
       			</tr>
     		</thead>
     		<tbody>
       			<tr>
-        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Standard</td>
-        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">3–6 business days</td>
-        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Ungraded cards, general electronics, sportswear</td>
-        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Yes</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Standard</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">3–6 business days</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Ungraded cards, general electronics, sportswear</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Yes</td>
       			</tr>
       			<tr>
-        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Expedited</td>
-        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">2–3 business days</td>
-        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Time-sensitive orders</td>
-        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Yes</td>
+        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Expedited</td>
+        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">2–3 business days</td>
+        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Time-sensitive orders</td>
+        			<td class="bg-(--paper-dim) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Yes</td>
       			</tr>
       			<tr>
-        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Signature Required</td>
-        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">3–6 business days</td>
-        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">High-value collectables, graded slabs</td>
-        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[13px]">Yes + signature</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Signature Required</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">3–6 business days</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">High-value collectables, graded slabs</td>
+        			<td class="bg-(--paper) font-ibm-plex-mono border-2 border-(--ink) py-3 px-4 text-left text-[10px] md:text-[13px]">Yes + signature</td>
       			</tr>
     		</tbody>
   		</table>
